@@ -13,7 +13,7 @@ module.exports = function () {
       })
     },
 
-    test_open: function (con) {
+    open: function (con) {
       con.connect(function (err) {
         if (err) {
           console.error('mysql connection error :' + err);

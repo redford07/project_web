@@ -1,27 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <% include partials/head %> 
+ <% include partials/head %>
 </head>
 <body>
 <% include partials/menu %>
 
-<div class="container-fluid bg-3 text-center">    
+<div class="container-fluid bg-3 text-center">
   <h3><%= page %></h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
+  <%=memberlist[0].id%>
+  <div class="box">
+      <h1>ul li Tag & float </h1>
+      <ul class="float">
+          <li>
+              <span class="col1">제목</span>
+              <span class="col2">조회수</span>
+              <span class="col3">작성자</span>
+              <span class="col4">날짜</span>
+          </li>
+          <li>
+              <span class="col1">제목1</span>
+              <span class="col2">10</span>
+              <span class="col3">홍길동</span>
+              <span class="col4">2019.05.01</span>
+          </li>
+      </ul>
   </div>
-</div>
 
 </body>
+<style media="screen">
+*{padding:0; margin:0; box-sizing: border-box;}
+ul,li{list-style:none;}
+
+.box{width: 100%; max-width: 1024px; margin:  50px auto;}
+
+table{width: 100%;text-align: center; border: 1px solid #ccc;
+  border-collapse: collapse;
+  border-spacing: 0;}
+table tr td {padding: 10px 0;border-bottom: 1px solid #ccc;}
+
+ul.table{display: table; width: 100%; border: 1px solid #ccc; text-align: center;}
+ul.table li{display: table-row;}
+ul.table li span{display: table-cell; padding: 10px 0;border-bottom: 1px solid #ccc;}
+ul.table li:last-child span{border-bottom: 0;}
+ul.table li span.col1{width: auto;}
+ul.table li span.col2{width: 5%;}
+ul.table li span.col3{width: 10%;}
+ul.table li span.col4{width: 10%;}
+
+
+
+ul.float{width: 100%; border: 1px solid  #ccc; text-align: center;}
+ul.float li{width: 100%; border-bottom: 1px solid #ccc; padding: 10px 0;}
+ul.float li:last-child{border-bottom: 0;}
+ul.float li::after{display: block; content: ""; clear: both;}
+ul.float li span{float: left;}
+ul.float li span.col1{width: 75%;}
+ul.float li span.col2{width: 5%;}
+ul.float li span.col3{width: 10%;}
+ul.float li span.col4{width: 10%;}
+
+.flex {border: 1px solid #ccc;}
+.flex .list{display: flex; flex-wrap: nowrap; text-align: center;  border-bottom: 1px solid #ccc;padding: 10px 0;}
+.flex .list:last-child{border-bottom: 0;}
+.flex .list>span{flex-shrink: 1; flex-grow: 1;flex-basis: 10%;}
+.flex .list span.col1{flex-basis: 75%;}
+.flex .list span.col2{flex-basis: 5%;}
+
+.grid {border: 1px solid #ccc; text-align: center;}
+.grid .list{display: grid;  grid-template-columns: 75% 5% 10% 10%; padding: 10px 0; border-bottom: 1px solid #ccc;}
+.grid .list:last-child{border-bottom: 0;}
+
+
+@media (max-width: 780px){
+  .box{box-sizing: border-box; padding: 0 20px;}
+  table{text-align: left; }
+  table tr{display:block; border-bottom:1px solid #ccc;}
+  table tr:last-child{border:0;}
+  table tr td {display: inline-block; margin-right: 5px; padding: 5px 0 0 5px; border : 0;}
+  table tr td.col1{display: block;}
+
+
+  ul.table{ text-align: left;}
+  ul.table li{display: block; border-bottom: 1px solid #ccc;}
+ul.table li:last-child{border-bottom: 0;}
+  ul.table li span{display: inline-block;; padding: 5px 0 0 5px; border-bottom: 0; margin-right: 5px; width: auto;}
+  ul.table li span.col1{display: block;}
+  ul.table li span.col2, ul.table li span.col3, ul.table li span.col4{width: auto;}
+
+  ul.float{text-align: left;}
+  ul.float li{ padding: 5px;}
+  ul.float li span{float: left;}
+  ul.float li span.col1{width: 100%; padding-bottom: 5px;}
+  ul.float li span.col2{width: 8%;}
+  ul.float li span.col3{width: 10%;}
+  ul.float li span.col4{width: 10%;}
+
+
+
+  .flex .list{display: flex; flex-wrap: wrap; text-align: left;  padding: 5px;}
+  .flex .list>span{flex-shrink: 0; flex-grow:0;flex-basis: 10%;}
+  .flex .list span.col1{flex-basis: 100%;padding-bottom: 5px;}
+  .flex .list span.col2{flex-basis: 8%;}
+
+  .grid {text-align: left;}
+  .grid .list{
+      padding: 5px 0 0 5px;
+      grid-template-columns:10% 10% 10% auto;
+      grid-template-areas:
+      "col1 col1 col1 col1 "
+      "col2 col3 col4 . "
+  }
+  .grid .list span.col1{grid-area: col1; padding-bottom: 5px;}
+  .grid .list span.col2{grid-area: col2;}
+  .grid .list span.col3{grid-area: col3;}
+  .grid .list span.col4{grid-area: col4;}
+}
+</style>
 <% include partials/script %>
 </html>

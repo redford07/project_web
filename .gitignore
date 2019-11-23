@@ -21,7 +21,7 @@ yarn-error.log*
 *.sw*
 /yarn.lock
 yarn.lock
-./website/db
+./website/api/db
 
 ~
 ~
