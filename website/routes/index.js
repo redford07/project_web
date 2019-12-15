@@ -201,7 +201,7 @@ router.post('/postChk', function(req, res, next) {
   var reporter = req.param('reporter');
   var content = req.param('content');
   var filelink = req.param('filelink');
-  console.log(req.param);
+  console.log(title );
 
 
   var sql = 'INSERT INTO newsinfo (reporter, company, new_title, link, content, password, writer ,filelink) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
