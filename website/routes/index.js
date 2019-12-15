@@ -174,6 +174,13 @@ router.get('/postDetail', function(req, res, next) {
   var sql = 'select * from newsinfo where _id = ?';
   var params = [req.param('v')];
 
+  var sql2 = 'update newsinfo set hit = hit + 1 where _id = ?'
+
+  connection.query(sql2, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    }
 
   connection.query(sql, params, function(err, rows, fields) {
     if (err) {
@@ -188,6 +195,107 @@ router.get('/postDetail', function(req, res, next) {
           ss_email: req.session.email, ss_password : req.session.password,
           list : rows
         });
+    }
+  });
+
+  });
+
+});
+
+
+router.get('/postModify', function(req, res, next) {
+
+
+  var sql = 'select * from newsinfo where _id = ?';
+  var params = [req.param('v')];
+
+
+  connection.query(sql, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    } else {
+      console.log(rows);
+        res.render('postModify', {
+          page: '수정',
+          menuId: 'postModify',
+          status: 1,
+          ss_email: req.session.email, ss_password : req.session.password,
+          list : rows
+        });
+    }
+  });
+
+});
+
+router.post('/postUpdated', function(req, res, next) {
+
+  var title = req.param('title');
+  var link = req.param('link');
+  var password = req.param('password');
+  var passwordCpm = req.param('passwordCpm');
+  var company = req.param('company');
+  var reporter = req.param('reporter');
+  var content = req.param('content');
+  var _id = req.param('_id');
+
+if (passwordCpm != password) {
+    res.end("<script>alert('comfirm password!!'); history.back();</script>")
+    return;
+}
+
+  var sql = 'update newsinfo set new_title = ? , link = ? , company = ? , reporter = ? , content = ? where _id = ?';
+
+
+  var params = [title,link,company,reporter,content,_id];
+  connection.query(sql, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    } else {
+      res.end("<script>alert('updated!'); history.back();</script>")
+      console.log(rows);
+    }
+  });
+
+});
+
+router.get('/postDelete', function(req, res, next) {
+
+var params = [req.param('v')];
+
+
+
+  var sql = 'delete from newsinfo where _id = ?';
+
+  connection.query(sql, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    } else {
+
+      var sql1 = 'SELECT * FROM newsinfo'; // 게시글목록
+      var sql2 = 'SELECT count(*) FROM newsinfo as cnt'; // 게시글카운트
+
+      connection.query(sql1, function(err, results, field) {
+        connection.query(sql2, function(err, cnt, field) {
+
+          console.log(results);
+          console.log(cnt);
+          res.render('index', {
+            page: '박제목록',
+            menuId: 'home',
+            list: results,
+            cnt : cnt,
+            data: 'testData list ejs',
+            ss_email: req.session.email, ss_password : req.session.password
+
+          });
+
+        });
+      });
+
+      console.log(rows);
     }
   });
 

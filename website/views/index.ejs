@@ -18,8 +18,7 @@
           <span class="col2">타이틀</span>
           <span class="col3">기자</span>
           <span class="col4">신문사</span>
-          <span class="col5">작성자</span>
-          <span class="col6">조회수</span>
+          <span class="col5">조회수</span>
         </li>
         <% for(i = 0; i<count; i++) {%>
 
@@ -28,8 +27,7 @@
               <span class="col2"><%= list[i].new_title %></span>
               <span class="col3"><%= list[i].reporter %></span>
               <span class="col4"><%= list[i].company %></span>
-              <span class="col5"><%= list[i].writer %></span>
-              <span class="col6"><%= list[i].hit %></span>
+              <span class="col5"><%= list[i].hit %></span>
               <div class="open" style="text-align: right; margin-right: 13px;">
                 <a href="/postDetail?v=<%=list[i]._id %>" style="absolute: relative;right: 4%;">열기</a>
 
