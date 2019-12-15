@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %>
+</head>
+<body>
+<% include partials/menu %>
+
+<div class="container-fluid bg-3 text-center" style="margin-top: 20%;text-align: center;color: black;">
+  <h3><%= page %></h3><br>
+
+  </div>
+
+
+
+</body>
+
+<% include partials/script %>
+</html>
+
+<script>
+<%if(status == 0){%>
+  alert("등록되지 않은 회원입니다.");
+  history.back();
+  <%}else if(status == 1){%>
+    alert("로그인성공");
+    location.href = "/";
+    <%}else if(status == 3){%>
+      alert("로그아웃 실패.");
+      location.href = "/";
+      <%}else if(status == 4){%>
+        alert("로그아웃 성공.");
+        location.href = "/";
+        <%}%>
+</script>

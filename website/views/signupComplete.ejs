@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %>
+</head>
+<body>
+<% include partials/menu %>
+
+<div class="container-fluid bg-3 text-center" style="margin-top: 20%;text-align: center;color: black;">
+  <h3><%= page %></h3><br>
+  <%=email%>
+  </div>
+  <%if(status == 1){%>
+  <div class="goHome" >
+    <a href="/"><button style=" border: 1px solid #ddd;background: black;color: white;padding: 8px; margin:0 auto; display:block;">홈으로 돌아가기</button></a>
+  </div>
+  <%}%>
+
+
+</body>
+
+<% include partials/script %>
+</html>
+
+<script>
+  <%if(status == 0){%>
+    alert("이미 가입된 회원입니다.");
+    location.href = "/";
+    <%}%>
+</script>

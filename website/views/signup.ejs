@@ -17,8 +17,9 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 }
 
 #stylized{
-	border:solid 2px #b7ddf2;
-	background:#ebf4fb;
+	border:solid 1px #ddd;
+  margin:20% auto;
+
 }
 #stylized h1 {
 	font-size:16px;
@@ -74,27 +75,29 @@ font-size:11px;
 font-weight:bold;
 font-family:tahoma;
 }
+
+label{margin-top:6px;}
 </style>
 
 
-<div id="stylized" class="myform" style="margin:0 auto;">
-<form id="form" name="form" method="post" action="/login" >
+<div id="stylized" class="myform" >
+<form id="form" name="form" method="post" action="signupComplete" >
 <h1 style="text-align:center;">회원가입</h1>
 
-<label>Name
+<label>이름
 <span class="small"></span>
 </label>
-<input type="text" name="name" id="name" placeholder="이름"/>
+<input type="text" name="name" id="name" placeholder="이름" required/>
 
-<label>Email
+<label>이메일
 <span class="small"></span>
 </label>
-<input type="text" name="email" id="email" placeholder="이메일"/>
+<input type="email" name="email" id="email" placeholder="이메일"/>
 
-<label>Password
+<label>비밀번호
 <span class="small"></span>
 </label>
-<input type="password" name="password" id="password" placeholder="비밀번호" />
+<input type="password" name="password" id="password" placeholder="비밀번호" required/>
 
 <button type="submit">회원가입</button>
 <div class="spacer"></div>

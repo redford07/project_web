@@ -3,10 +3,22 @@ var path = require('path');
 var logger = require('morgan');
 var index = require('./routes/index');
 var app = express();
+bodyParser = require('body-parser');
+var session = require('express-session');
+
+app.use(session({
+secret :'asdjha!@#@#$dd',
+resave:false,
+saveUninitialized:true
+}))
+
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.set('api', path.join(__dirname, 'api'));
 app.set('view engine', 'ejs');
 
 // set path for static assets
