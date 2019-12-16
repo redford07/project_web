@@ -8,39 +8,32 @@
 
 
 
-<table>
-    <thead>
-        <caption> 등록하기 </caption>
-    </thead>
+<table style="margin: 200px auto; border:1px solid #aaa;">
     <tbody>
         <form action="/postChk" method="post" encType="post">
             <tr>
-                <th>기사제목: </th>
+                <th style="padding:10px;">기사제목: </th>
                 <td><input type="text" name="title" id="title" placeholder="제목을 입력하세요. " required/></td>
             </tr>
             <tr>
-                <th>기사링크: </th>
+                <th style="padding:10px;">기사링크: </th>
                 <td><input type="text" name="link" id="link" placeholder="링크를 입력하세요. " required/></td>
             </tr>
             <tr>
-                <th>신문사: </th>
+                <th style="padding:10px;">신문사: </th>
                 <td><input type="text" name="company" id="company" placeholder="신문사를 입력하세요. " required/></td>
             </tr>
             <tr>
-                <th>기자: </th>
+                <th style="padding:10px;">기자: </th>
                 <td><input type="text" name="reporter" id="reporter" placeholder="기자를 입력하세요. " required/></td>
             </tr>
             <tr>
-                <th>내용: </th>
-                <td><textarea cols="10" name="content" id="content" placeholder="내용을 입력하세요. " required></textarea></td>
-            </tr>
-            <tr>
-                <th>첨부파일: </th>
-                <td><input type="text" name="filelink" id="filelink" placeholder="파일을 선택하세요. " /></td>
+                <th style="padding:10px;">내용: </th>
+                <td><textarea cols="20" name="content" id="content" placeholder="내용을 입력하세요. " required></textarea></td>
             </tr>
             <%if(!ss_password){%>
             <tr>
-                <th>비밀번호: </th>
+                <th style="padding:10px;">비밀번호: </th>
                 <td><input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요" required/></td>
             </tr>
             <%}else{%>
@@ -49,10 +42,10 @@
               </tr>
             <%}%>
             <tr>
-                <td colspan="2">
-                    <input type="submit" value="등록""/>
-                    <input type="reset" value="지우기"/>
-                    <a href="/"><input type="button" value="글 목록으로 ""/></a>
+                <td colspan="2" style="text-align:center;">
+                    <input style="border: 0px;color: white;background: black; margin: 5px;" type="submit" value="등록"/>
+                    <input style="border: 0px;color: white;background: black; margin: 5px;" type="reset" value="지우기"/>
+                    <a href="/"><input style="border: 0px;color: white;background: black; margin: 5px;" type="button" value="글 목록으로 "/></a>
 
                 </td>
             </tr>

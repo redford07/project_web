@@ -11,7 +11,7 @@ mysql.open(connection);
 router.get('/', function(req, res, next) {
 
 
-  var sql = 'SELECT * FROM newsinfo'; // 게시글목록
+  var sql = 'SELECT * FROM newsinfo order by _id desc' ; // 게시글목록
   var sql2 = 'SELECT count(*) FROM newsinfo as cnt'; // 게시글카운트
 
   connection.query(sql, function(err, results, field) {
@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
       console.log(results);
       console.log(cnt);
       res.render('index', {
-        page: '박제목록',
+        page: '최신박제목록',
         menuId: 'home',
         list: results,
         cnt : cnt,
