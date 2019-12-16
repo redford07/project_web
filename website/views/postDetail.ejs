@@ -93,6 +93,7 @@ label{margin-top:6px;}
 <label>링크</label>
 <div class=""><%=list[0].link%></div>
 <a href="/postModify?v=<%=list[0]._id %>"> <button type="submit" style="margin-bottom:2px;">수정</button></a>
+<a href="/postBakze?v=<%=list[0]._id %>"> <button type="submit" style="margin-bottom:2px;">박제</button></a>
 
 <a href="/"><button type="submit">목록</button></a>
 
@@ -102,3 +103,10 @@ label{margin-top:6px;}
 </body>
 <% include partials/script %>
 </html>
+<script type="text/javascript">
+
+<% if (status == 9 ){%>
+alert("추천했습니다");
+<%}%>
+
+</script>

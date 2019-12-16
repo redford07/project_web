@@ -32,9 +32,6 @@ router.get('/', function(req, res, next) {
     });
   });
 
-
-
-
 });
 
 
@@ -129,17 +126,32 @@ if (!req.session.email) {
 }
 });
 
-router.get('/about', function(req, res, next) {
-  res.render('about', {
-    page: 'About Us',
-    menuId: 'about',
-    ss_email: req.session.email, ss_password : req.session.password
+router.get('/rank', function(req, res, next) {
+  var sql = 'SELECT * FROM newsinfo order by good desc'; // 게시글목록
+  var sql2 = 'SELECT count(*) FROM newsinfo as cnt'; // 게시글카운트
+
+  connection.query(sql, function(err, results, field) {
+    connection.query(sql2, function(err, cnt, field) {
+
+      console.log(results);
+      console.log(cnt);
+      res.render('rank', {
+        page: '명예의박제',
+        menuId: '명예의박제',
+        list: results,
+        cnt : cnt,
+        data: 'testData list ejs',
+        ss_email: req.session.email, ss_password : req.session.password
+
+      });
+
+    });
   });
 });
 
 router.get('/contact', function(req, res, next) {
   res.render('contact', {
-    page: 'Contact Us',
+    page: '페이지소개',
     menuId: 'contact',
     ss_email: req.session.email, ss_password : req.session.password
   });
@@ -195,6 +207,41 @@ router.get('/postDetail', function(req, res, next) {
           ss_email: req.session.email, ss_password : req.session.password,
           list : rows
         });
+    }
+  });
+
+  });
+
+});
+
+router.get('/postBakze', function(req, res, next) {
+
+
+  var sql = 'select * from newsinfo where _id = ?';
+  var params = [req.param('v')];
+
+  var sql2 = 'update newsinfo set good = good + 1 where _id = ?'
+
+  connection.query(sql2, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    }
+
+  connection.query(sql, params, function(err, rows, fields) {
+    if (err) {
+      console.log(err);
+
+    } else {
+      console.log(rows);
+        res.render('postDetail', {
+          page: '디테일',
+          menuId: 'postDetail',
+          status: 9,
+          ss_email: req.session.email, ss_password : req.session.password,
+          list : rows
+        });
+
     }
   });
 
