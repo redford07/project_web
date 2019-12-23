@@ -44,9 +44,8 @@ router.post('/signupComplete', function(req, res, next) {
 // 파라메터 받아와서
   var sql = 'INSERT INTO member (name, email, password) VALUES(?, ?, ?)';
   var params = [name, email, password];
-  connection.query(sql, params, function(err, rows, fields) //쿼리실
-    if (err) {
-      console.log(err); //유니크값 에러일경우 중복이메일
+  connection.query(sql, params, function(err, rows, fields){
+    if (err) {//유니크값 에러일경우 중복이메일
       res.render('signupComplete', {
         page: '회원가입 실패',
         menuId: 'signupComplete',
@@ -63,6 +62,8 @@ router.post('/signupComplete', function(req, res, next) {
         email: email + '로 회원가입이 완료되었습니다.',
         status: 1,
         ss_email: req.session.email, ss_password : req.session.password
+      });
+    }
       });
     });
 
