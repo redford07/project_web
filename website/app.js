@@ -7,6 +7,9 @@ bodyParser = require('body-parser');
 var session = require('express-session');
 var moment = require('moment');
 
+//공통모듈 선언
+
+//세션 정의
 app.use(session({
 secret :'asdjha!@#@#$dd',
 resave:false,
@@ -17,26 +20,26 @@ saveUninitialized:true
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-// view engine setup
+// 프론트 세 및 서버사ㅣ드 세팅
 app.set('views', path.join(__dirname, 'views'));
 app.set('api', path.join(__dirname, 'api'));
 app.set('view engine', 'ejs');
 
-// set path for static assets
+// 정적변수 세팅
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// routes
+// 기본라우트
 app.use('/', index);
 
-// catch 404 and forward to error handler
+//404 핸들러
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handler
+// 에러 핸들러
 app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
