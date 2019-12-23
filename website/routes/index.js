@@ -64,10 +64,8 @@ router.post('/signupComplete', function(req, res, next) {
         status: 1,
         ss_email: req.session.email, ss_password : req.session.password
       });
-    }
-  });
+    });
 
-});
 
 
 router.post('/loginComplete', function(req, res, next) {
